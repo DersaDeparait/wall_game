@@ -121,7 +121,7 @@ class Life(BaseObject):
         self.color_frame = color_frame
         self.color_body = color_body
         self.color_eye = color_eye
-
+    
     def update(self):
         super().update()
         self.update_spin()
