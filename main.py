@@ -1,19 +1,28 @@
 import pygame as pg
-import game_object.base
+from game_object.base import Wall, Life
 
 surface = pg.display.set_mode((1920, 1080))
-print(surface)
 b = []
 for i in range(3):
-    b.append(game_object.base.Wall(position=[100, i*100+100]))
+    b.append(Wall(position=[100, i*100+100]))
+    b.append(Life(position=[300, i*100+100]))
 
-
-while 1:
+def control():
     for i in pg.event.get():
         if i.type == pg.QUIT:
             pg.quit()
 
+def update():
+    for bb in b:
+        bb.update()
+
+def draw():
     surface.fill([0, 150, 225])
     for bb in b:
         bb.draw(surface)
     pg.display.flip()
+
+while True:
+    control()
+    update()
+    draw()
